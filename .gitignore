@@ -121,10 +121,6 @@ dist
 # TernJS port file
 .tern-port
 
-# VSCode
-.vscode/
-.vscode-test
-
 # yarn v2
 .yarn/cache
 .yarn/unplugged

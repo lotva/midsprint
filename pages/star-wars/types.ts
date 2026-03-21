@@ -1,10 +1,10 @@
 export type Movie = {
-  id: string;
-  title: string;
-  release_date: string;
-};
+	id: string
+	release_date: string
+	title: string
+}
 
 export type MovieDetails = Movie & {
-  director: string;
-  producer: string;
-};
+	director: string
+	producer: string
+}
