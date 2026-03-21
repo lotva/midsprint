@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		"stylelint.vscode-stylelint",
+		"joshbolduc.commitlint",
+		"EditorConfig.EditorConfig",
+		"oxc.oxc-vscode"
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"stylelint.validate": ["html", "css"],
+
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.organizeImports": "explicit"
+	},
+
+	"editor.defaultFormatter": "oxc.oxc-vscode",
+	"editor.formatOnSave": true,
+
+	"editor.tabSize": 2
+}
