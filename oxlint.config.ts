@@ -12,7 +12,7 @@ export default defineConfig({
 		node: true,
 	},
 
-	ignorePatterns: ['src/common/api'],
+	ignorePatterns: ['public', 'src/common/api/codegen'],
 
 	jsPlugins: [
 		'@nkzw/eslint-plugin',

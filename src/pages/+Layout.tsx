@@ -1,25 +1,26 @@
-import './Layout.css'
-
-import logoUrl from '../assets/logo.svg'
-import { Link } from '../components/Link'
+import { Link } from '@/components/Link'
+import logoUrl from '@/core/assets/logo.svg'
+import { MswProvider } from '@/core/layout/MswProvider'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<div
-			style={{
-				display: 'flex',
-				margin: 'auto',
-				maxWidth: 900,
-			}}
-		>
-			<Sidebar>
-				<Logo />
-				<Link href="/">Welcome</Link>
-				<Link href="/todo">Todo</Link>
-				<Link href="/star-wars">Data Fetching</Link>
-			</Sidebar>
-			<Content>{children}</Content>
-		</div>
+		<MswProvider>
+			<div
+				style={{
+					display: 'flex',
+					margin: 'auto',
+					maxWidth: 900,
+				}}
+			>
+				<Sidebar>
+					<Logo />
+					<Link href="/">Welcome</Link>
+					<Link href="/todo">Todo</Link>
+					<Link href="/star-wars">Data Fetching</Link>
+				</Sidebar>
+				<Content>{children}</Content>
+			</div>
+		</MswProvider>
 	)
 }
 
