@@ -1,11 +1,11 @@
 {
 	"type": "module",
 	"scripts": {
-		"dev": "vike dev",
+		"dev": "vike dev --host",
 		"build": "vike build",
 		"preview": "vike build && vike preview",
 		"check:formatting": "oxfmt --check",
-		"check:styles": "stylelint \"src/**/*.css\"",
+		"check:styles": "stylelint \"**/*.css\"",
 		"check:scripts": "oxlint"
 	},
 	"dependencies": {
