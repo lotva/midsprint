@@ -30,9 +30,9 @@
 	--font-size__xl: 2em;
 	--font-size__2xl: 4em;
 
-	--radius-sm: calc(var(--radius) - 0.125em);
+	--radius__sm: calc(var(--radius) - 0.125em);
 	--radius: 0.25em;
-	--radius-lg: calc(var(--radius) + 0.125em);
+	--radius__lg: calc(var(--radius) + 0.125em);
 
 	--decoration__line: underline;
 	--decoration__thickness: 0.08em;

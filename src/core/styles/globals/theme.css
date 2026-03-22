@@ -19,8 +19,7 @@ a {
 		background-color var(--animation__duration) var(--animation__ease),
 		text-decoration-color var(--animation__duration) var(--animation__ease),
 		box-shadow var(--animation__duration--fast) var(--animation__ease-in-out),
-		text-decoration-thickness var(--animation__duration--fast)
-			var(--animation__ease-in-out);
+		text-decoration-thickness var(--animation__duration--fast) var(--animation__ease-in-out);
 
 	&:hover,
 	&:focus-visible {

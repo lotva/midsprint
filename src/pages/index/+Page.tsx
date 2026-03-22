@@ -1,3 +1,4 @@
+import { MovieInfiniteList } from '@/modules/movie-list/MovieInfiniteList'
 import { Title } from './ui/Title'
 
 export default function Page() {
@@ -5,11 +6,7 @@ export default function Page() {
 		<>
 			<Title />
 
-			<p>This page is:</p>
-			<ul>
-				<li>Rendered to HTML.</li>
-				<li>Interactive.</li>
-			</ul>
+			<MovieInfiniteList className="mt-5g" />
 		</>
 	)
 }

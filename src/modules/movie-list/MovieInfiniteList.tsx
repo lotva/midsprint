@@ -1,0 +1,99 @@
+import { withFallback } from 'vike-react-query'
+import { usePaginatedMovies } from './lib/usePaginatedMovies'
+
+export const MovieInfiniteList = withFallback(
+	({ className }: { className?: string }) => {
+		const { movies, hasNextPage, isFetchingNextPage, scrollTargetRef } = usePaginatedMovies()
+
+		const filteredMovies = movies.filter((movie) => !movie.posterUrlPreview?.includes('no-poster'))
+
+		return (
+			<div className={`flex flex-col gap-3g ${className}`}>
+				<div className={GRID_LAYOUT}>
+					{filteredMovies.map((movie) => {
+						const meta = [movie.year, movie.ratingKinopoisk, movie.ratingImdb].filter(Boolean)
+
+						return (
+							<article
+								className="clickable-area group"
+								key={`${movie.kinopoiskId}-${movie.nameOriginal}`}
+							>
+								<MovieCardBase>
+									<img
+										alt={`Постер: ${movie.nameRu || movie.nameOriginal}`}
+										className="h-full w-full object-cover transition-ease-out transition-transform duration-150 group-hover:scale-104"
+										loading="lazy"
+										src={movie.posterUrlPreview}
+									/>
+								</MovieCardBase>
+								<div className="mt-1g">
+									<h2 className="text-sm font-medium leading-tight text-foreground-title">
+										<a
+											className="clickable-area-trigger decoration-offset-[0.25em]"
+											href={`/movie/${movie.kinopoiskId}`}
+										>
+											{movie.nameRu || movie.nameOriginal}
+										</a>
+									</h2>
+									<p className="text-xs text-foreground-muted mt-1.5gr">{meta.join(' · ')}</p>
+								</div>
+							</article>
+						)
+					})}
+				</div>
+
+				<div
+					className="py-3g flex justify-center items-center min-h-[100px]"
+					ref={scrollTargetRef}
+				>
+					{isFetchingNextPage ? (
+						<div className="flex items-center gap-2">
+							<div className="w-4 h-4 border-2 border-border border-t-foreground-strong rounded-full animate-spin" />
+							<span className="text-sm text-foreground-muted">Loading more...</span>
+						</div>
+					) : (
+						hasNextPage && <div className="text-foreground-muted text-xs">Keep scrolling...</div>
+					)}
+				</div>
+			</div>
+		)
+	},
+	({ className }) => (
+		<div className={`${GRID_LAYOUT} animate-pulse ${className}`}>
+			{[...Array(8)].map((_, i) => (
+				<div key={i}>
+					<MovieCardBase className="bg-muted" />
+					<div className="mt-0.5g space-y-0.5g">
+						<div className="h-3 bg-muted rounded w-full" />
+						<div className="h-3 bg-muted rounded w-1/2" />
+					</div>
+				</div>
+			))}
+		</div>
+	),
+	({ error, retry }) => (
+		<div className="p-3g bg-red-50 rounded-2xl text-center border border-red-100">
+			<p className="text-red-600 text-sm mb-2g">Ошибка при загрузке: {error.message}</p>
+			<button
+				className="px-5 py-2 bg-red-600 text-white text-sm rounded-full hover:bg-red-700 transition-colors"
+				onClick={() => retry()}
+			>
+				Попробовать снова
+			</button>
+		</div>
+	),
+)
+
+const GRID_LAYOUT = 'grid grid-cols-2 md:grid-cols-4 gap-x-0.5g gap-y-3g'
+
+const MovieCardBase = ({
+	children,
+	className = '',
+}: {
+	children?: React.ReactNode
+	className?: string
+}) => (
+	<div className={`flex flex-col gap-0.5g ${className}`}>
+		<div className="relative aspect-[2/3] overflow-hidden rounded-lg bg-surface">{children}</div>
+	</div>
+)

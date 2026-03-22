@@ -1,5 +1,7 @@
 html {
 	cursor: default;
+	container-type: inline-size;
+	container-type: inline-size scroll-state;
 	overscroll-behavior: contain;
 }
 

@@ -5,9 +5,9 @@
 	align-items: center;
 	justify-content: center;
 
-	padding: calc(gapRelative(0.25) + var(--typography__surface-capital-compensator)) gapRelative(1)
-		gapRelative(0.25);
-	border-radius: var(--radius);
+	padding: calc(gapRelative(0.6) + var(--typography__surface-capital-compensator)) gapRelative(1)
+		gapRelative(0.6);
+	border-radius: var(--radius__sm);
 
 	color: var(--color__background);
 	letter-spacing: 0.05em;

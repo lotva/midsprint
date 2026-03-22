@@ -10,7 +10,7 @@
 
 	padding-block: gap(1.5);
 
-	background: linear-gradient(to bottom, var(--color__background) 78%, transparent);
+	background-image: linear-gradient(to bottom, var(--color__background) 85%, transparent);
 
 	@container not scroll-state(scrollable: top) {
 		span[role='img'] {
