@@ -36,7 +36,7 @@ export const MovieInfiniteList = withFallback(
 									<h2 className="text-sm font-medium leading-tight text-foreground-title pe-0.5g">
 										<a
 											className="clickable-area-trigger decoration-offset-[0.25em]"
-											href={`/${movie.kinopoiskId}`}
+											href={`/movie/${movie.kinopoiskId}`}
 										>
 											{movie.nameRu || movie.nameOriginal}
 										</a>

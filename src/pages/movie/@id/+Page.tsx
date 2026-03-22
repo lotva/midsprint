@@ -1,7 +1,7 @@
 import { formatNumber } from '@/common/lib/formatNumber.js'
+import { Title } from '@/common/ui/Title.js'
 import { FavoriteButton } from '@/modules/user-collections/index.js'
 import { useData } from 'vike-react/useData'
-import { Title } from '../ui/Title.js'
 import type { Data } from './+data.js'
 
 export default function Page() {

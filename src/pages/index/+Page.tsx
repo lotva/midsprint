@@ -1,5 +1,5 @@
+import { Title } from '@/common/ui/Title'
 import { MovieCatalog } from '@/modules/catalog'
-import { Title } from './ui/Title'
 
 export default function Page() {
 	return (

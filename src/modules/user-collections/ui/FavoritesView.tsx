@@ -60,7 +60,9 @@ function FavoriteItem({ movie }: { movie: Movie }) {
 
 				<div className="flex flex-col gap-0.5g h-full">
 					<div className="flex justify-between items-baseline gap-1g">
-						<h2 className="text-l font-bold leading-tight">{movie.nameRu || movie.nameOriginal}</h2>
+						<h2 className="text-l font-bold leading-tight">
+							<a href={`/movie/${movie.kinopoiskId}`}>{movie.nameRu || movie.nameOriginal}</a>
+						</h2>
 						{movie.ratingKinopoisk && (
 							<span className="text-primary text-metrics-fix">
 								{formatNumber(movie.ratingKinopoisk)}
