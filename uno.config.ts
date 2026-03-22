@@ -1,4 +1,4 @@
-import { defineConfig, presetWind4 } from 'unocss'
+import { defineConfig, presetIcons, presetWind4 } from 'unocss'
 
 export default defineConfig({
 	presets: [
@@ -9,6 +9,16 @@ export default defineConfig({
 				theme: {
 					mode: 'on-demand',
 				},
+			},
+		}),
+
+		presetIcons({
+			extraProperties: {
+				display: 'inline-block',
+				height: '1lh',
+				'mask-size': '100% 105%',
+				'vertical-align': 'middle',
+				width: '1lh',
 			},
 		}),
 	],
