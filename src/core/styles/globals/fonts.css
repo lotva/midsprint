@@ -15,15 +15,17 @@
 p,
 h1,
 h2 {
-	&::before {
-		content: '';
-		display: table;
-		margin-block-end: calc(-0.3em - (1lh - 1em) / 2);
-	}
+	&:not(.metrics-fix-disabled) {
+		&::before {
+			content: '';
+			display: table;
+			margin-block-end: calc(-0.3em - (1lh - 1em) / 2);
+		}
 
-	&::after {
-		content: '';
-		display: table;
-		margin-block-start: calc(-0.1em - (1lh - 1em) / 2);
+		&::after {
+			content: '';
+			display: table;
+			margin-block-start: calc(-0.1em - (1lh - 1em) / 2);
+		}
 	}
 }

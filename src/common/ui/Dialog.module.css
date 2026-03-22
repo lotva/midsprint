@@ -1,0 +1,133 @@
+html,
+body {
+	&:has(.dialog[open]) {
+		touch-action: none;
+		overscroll-behavior: none;
+
+		-webkit-overflow-scrolling: auto;
+	}
+}
+
+.dialog,
+.dialog::backdrop {
+	opacity: 0;
+	transition:
+		display var(--animation__duration) allow-discrete,
+		overlay var(--animation__duration) allow-discrete,
+		opacity 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dialog {
+	--dialog-radius-outer: 0.75em;
+	--dialog-radius-inner: calc(0.75em - gap(0.5));
+
+	translate: 0 30px;
+	scale: 0.96;
+
+	overflow: visible;
+
+	interpolate-size: allow-keywords;
+	inline-size: fit-content;
+	padding: gap(1.25) gap(0.75) gap(0.75);
+	border: none;
+	border-radius: var(--dialog-radius-outer);
+
+	opacity: 0;
+	background-color: var(--color__background);
+
+	transition:
+		display var(--animation__duration) allow-discrete,
+		overlay var(--animation__duration) allow-discrete,
+		height var(--animation__duration) cubic-bezier(0.22, 1, 0.36, 1),
+		translate var(--animation__duration) cubic-bezier(0.22, 1, 0.36, 1),
+		scale var(--animation__duration) cubic-bezier(0.22, 1, 0.36, 1),
+		opacity calc(var(--animation__duration) + 100ms) cubic-bezier(0.22, 1, 0.36, 1);
+
+	@media (prefers-color-scheme: dark) {
+		background-color: var(--color__muted);
+	}
+
+	&[open],
+	&[open]::backdrop {
+		opacity: 1;
+
+		@starting-style {
+			opacity: 0;
+		}
+	}
+
+	&[open] {
+		translate: 0 0;
+		scale: 1;
+
+		@starting-style {
+			translate: 0 30px;
+			scale: 0.96;
+		}
+	}
+
+	&::backdrop {
+		touch-action: none;
+		cursor: pointer;
+
+		overflow: hidden;
+		overscroll-behavior: contain;
+
+		background-color: rgb(0 0 0 / 30%);
+	}
+}
+
+.header {
+	display: flex;
+	column-gap: gap(3);
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+.title {
+	font: inherit;
+	font-weight: bold;
+}
+
+.close {
+	position: relative;
+
+	display: inline-flex;
+	flex-shrink: 0;
+
+	border-radius: 50%;
+
+	color: inherit;
+
+	outline: none;
+
+	transition: color var(--animation__duration) var(--animation__ease);
+
+	&:hover,
+	&:focus-visible {
+		color: var(--color__primary);
+		transition: none;
+	}
+
+	&:focus-visible {
+		outline: 0.1em solid var(--color__outline);
+		outline-offset: 0.5em;
+		box-shadow: none;
+	}
+
+	&.is-safari:focus-visible {
+		color: inherit;
+		outline: none;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: 1;
+		inset: gap(-1) gap(-0.75) gap(-0.75) gap(-0.75);
+	}
+}
+
+.icon {
+	pointer-events: none;
+}

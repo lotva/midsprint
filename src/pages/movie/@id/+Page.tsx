@@ -30,7 +30,7 @@ export default function Page() {
 					</p>
 				)}
 
-				<div className="mt-2g text-align-center">
+				<div className="mt-2g mx-auto w-fit">
 					<FavoriteButton movie={data} />
 				</div>
 

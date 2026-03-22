@@ -5,13 +5,16 @@
 
 	padding: gap(0.55) gap(1.5) gap(0.6);
 	border: 1px solid var(--color__input-border);
-	border-radius: var(--radius);
 
 	line-height: var(--typography__leading--tight);
 	color: var(--color__foreground--strong);
 	text-align: center;
 
 	background-color: var(--color__input);
+
+	:where(&) {
+		border-radius: var(--radius);
+	}
 
 	&:hover {
 		background-color: var(--color__input--hover);

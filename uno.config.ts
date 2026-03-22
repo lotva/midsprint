@@ -15,10 +15,10 @@ export default defineConfig({
 		presetIcons({
 			extraProperties: {
 				display: 'inline-block',
-				height: '1lh',
-				'mask-size': '100% 105%',
+				height: '1.25cap',
 				'vertical-align': 'middle',
-				width: '1lh',
+				width: '1.25cap',
+				'mask-position': 'center',
 			},
 		}),
 	],
