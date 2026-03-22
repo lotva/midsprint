@@ -1,6 +1,6 @@
 import { formatNumber } from '@/common/lib/formatNumber.js'
 import { Title } from '@/common/ui/Title.js'
-import { FavoriteButton } from '@/modules/user-collections/index.js'
+import { CompareButton, FavoriteButton } from '@/modules/user-collections'
 import { useData } from 'vike-react/useData'
 import type { Data } from './+data.js'
 
@@ -30,8 +30,9 @@ export default function Page() {
 					</p>
 				)}
 
-				<div className="mt-2g mx-auto w-fit">
+				<div className="mt-2g flex gap-0.5g flex-wrap justify-center">
 					<FavoriteButton movie={data} />
+					<CompareButton movie={data} />
 				</div>
 
 				<img

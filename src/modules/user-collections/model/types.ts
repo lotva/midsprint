@@ -1,4 +1,7 @@
-import { Film } from '@/common/api'
+import { Film, FilmSearchByFiltersResponseItems } from '@/common/api'
 
-export type Movie = Film
+export interface Movie extends Omit<Partial<Film>, 'type'> {
+	type?: Required<FilmSearchByFiltersResponseItems>['type']
+}
+
 export type MovieId = Movie['kinopoiskId']

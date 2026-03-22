@@ -2,6 +2,7 @@ import '@/core/styles/index.css'
 import 'virtual:uno.css'
 
 import { NavigationLink } from '@/common/ui/NavigationLink'
+import { CompareTable } from '@/modules/user-collections'
 import { Logo } from '../common/ui/Logo'
 import styles from './Layout.module.css'
 
@@ -10,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 		<>
 			<Header>
 				<div>
-					<NavigationLink href="/comparison">Сравнение</NavigationLink>
+					<NavigationLink href="https://github.com/lotva/midsprint">Исходный код</NavigationLink>
 				</div>
 
 				<Logo />
@@ -23,6 +24,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			<main className="py-10g">
 				<Content>{children}</Content>
 			</main>
+
+			<CompareTable />
 		</>
 	)
 }

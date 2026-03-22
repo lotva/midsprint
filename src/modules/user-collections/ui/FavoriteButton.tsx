@@ -39,11 +39,13 @@ export function FavoriteButton({ movie, className, ...props }: IProps) {
 			<Button
 				{...props}
 				className={`${className ?? ''} ${isFavorite ? 'opacity-90' : ''}`}
+				icon={
+					<span
+						className={isFavorite ? 'i-gravity-ui-heart-fill color-primary' : 'i-gravity-ui-heart'}
+					/>
+				}
 				onClick={handleToggle}
 			>
-				<span
-					className={isFavorite ? 'i-gravity-ui-heart-fill color-primary' : 'i-gravity-ui-heart'}
-				/>
 				{isFavorite ? 'В избранном' : 'В избранное'}
 			</Button>
 

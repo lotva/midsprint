@@ -16,9 +16,9 @@ export default defineConfig({
 			extraProperties: {
 				display: 'inline-block',
 				height: '1.25cap',
+				'mask-position': 'center',
 				'vertical-align': 'middle',
 				width: '1.25cap',
-				'mask-position': 'center',
 			},
 		}),
 	],
@@ -83,6 +83,10 @@ export default defineConfig({
 				'in-out': 'var(--animation__ease-in-out)',
 				out: 'var(--animation__ease-out)',
 			},
+		},
+
+		breakpoints: {
+			md: '640px',
 		},
 
 		colors: {

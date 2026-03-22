@@ -101,12 +101,12 @@
 		--color__muted--hover: oklch(0.35 0 0);
 		--color__muted--active: oklch(0.4 0 0);
 
-		--color__input: oklch(1 0 0 / 0.045);
-		--color__input--hover: oklch(1 0 0 / 0.075);
-		--color__input--active: oklch(1 0 0 / 0.1125);
+		--color__input: oklch(0.179 0 0);
+		--color__input--hover: oklch(0.205 0 0);
+		--color__input--active: oklch(0.237 0 0);
 		--color__input-foreground: var(--color__foreground);
 		--color__input-placeholder: var(--color__foreground--muted);
-		--color__input-border: oklch(1 0 0 / 0.15);
+		--color__input-border: oklch(0.269 0 0);
 		--color__input-border--focus: var(--color__outline);
 
 		--color__outline: oklch(0.5 0 0 / 0.5);
