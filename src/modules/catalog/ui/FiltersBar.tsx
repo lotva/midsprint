@@ -17,6 +17,7 @@ export function FiltersBar() {
 	return (
 		<div className="flex items-center gap-0.5g flex-wrap">
 			<Select
+				aria-label="Тип контента"
 				onChange={(e) => updateFilters({ type: e.target.value as Filters['type'] })}
 				value={filters.type || ''}
 			>
@@ -26,6 +27,7 @@ export function FiltersBar() {
 			</Select>
 
 			<Select
+				aria-label="Жанр"
 				onChange={(e) =>
 					updateFilters({
 						genres: e.target.value !== '' ? [Number(e.target.value)] : undefined,
@@ -45,6 +47,7 @@ export function FiltersBar() {
 			</Select>
 
 			<Select
+				aria-label="Минимальный рейтинг"
 				onChange={(e) => updateFilters({ ratingFrom: Number(e.target.value) || undefined })}
 				value={filters.ratingFrom ? String(filters.ratingFrom) : ''}
 			>

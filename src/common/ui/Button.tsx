@@ -24,11 +24,7 @@ export function Button({
 		>
 			{icon}
 
-			<span
-				className={`${variant === 'icon-mobile' ? 'hidden md:inline' : ''} ${variant === 'icon' ? 'visually-hidden' : ''}`}
-			>
-				{children}
-			</span>
+			<span className={styles.text}>{children}</span>
 		</button>
 	)
 }

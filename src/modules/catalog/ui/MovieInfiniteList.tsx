@@ -14,10 +14,9 @@ export const MovieInfiniteList = withFallback(
 			<div className={`flex flex-col gap-3g ${className}`}>
 				<ul className={GRID_LAYOUT}>
 					{movies.map((movie) => (
-						<MovieCard
-							key={`${movie.kinopoiskId}-${movie.nameOriginal}`}
-							movie={movie}
-						/>
+						<li key={`${movie.kinopoiskId}-${movie.nameOriginal}`}>
+							<MovieCard movie={movie} />
+						</li>
 					))}
 				</ul>
 

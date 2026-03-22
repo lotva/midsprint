@@ -34,3 +34,15 @@
 		min-block-size: 40px;
 	}
 }
+
+.text {
+	.button.icon-mobile & {
+		@media (width < 640px) {
+			@mixin visually-hidden;
+		}
+	}
+
+	.button.icon {
+		@mixin visually-hidden;
+	}
+}
