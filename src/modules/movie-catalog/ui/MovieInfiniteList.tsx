@@ -1,17 +1,20 @@
+import { formatNumber } from '@/common/lib/formatNumber'
 import { withFallback } from 'vike-react-query'
-import { usePaginatedMovies } from './lib/usePaginatedMovies'
+import { usePaginatedMovies } from '../lib/usePaginatedMovies'
+import { useSyncFilters } from '../lib/useSyncFilters'
 
 export const MovieInfiniteList = withFallback(
-	({ className }: { className?: string }) => {
-		const { movies, hasNextPage, isFetchingNextPage, scrollTargetRef } = usePaginatedMovies()
-
-		const filteredMovies = movies.filter((movie) => !movie.posterUrlPreview?.includes('no-poster'))
+	({ className = '' }: { className?: string }) => {
+		const { filters } = useSyncFilters()
+		const { movies, hasNextPage, isFetchingNextPage, scrollTargetRef } = usePaginatedMovies(filters)
 
 		return (
 			<div className={`flex flex-col gap-3g ${className}`}>
 				<div className={GRID_LAYOUT}>
-					{filteredMovies.map((movie) => {
-						const meta = [movie.year, movie.ratingKinopoisk, movie.ratingImdb].filter(Boolean)
+					{movies.map((movie) => {
+						const meta = [movie.year, movie.ratingKinopoisk, movie.ratingImdb]
+							.map((value) => formatNumber(value))
+							.filter(Boolean)
 
 						return (
 							<article
@@ -27,7 +30,7 @@ export const MovieInfiniteList = withFallback(
 									/>
 								</MovieCardBase>
 								<div className="mt-1g">
-									<h2 className="text-sm font-medium leading-tight text-foreground-title">
+									<h2 className="text-sm font-medium leading-tight text-foreground-title pe-0.5g">
 										<a
 											className="clickable-area-trigger decoration-offset-[0.25em]"
 											href={`/movie/${movie.kinopoiskId}`}
@@ -84,7 +87,7 @@ export const MovieInfiniteList = withFallback(
 	),
 )
 
-const GRID_LAYOUT = 'grid grid-cols-2 md:grid-cols-4 gap-x-0.5g gap-y-3g'
+const GRID_LAYOUT = 'grid grid-cols-2 md:grid-cols-4 gap-x-0.5g gap-y-3g min-h-50vh'
 
 const MovieCardBase = ({
 	children,

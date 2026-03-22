@@ -3,6 +3,5 @@
 
 	body._is-transitioning & {
 		opacity: var(--color__disabled-state-opacity);
-		transition: none;
 	}
 }

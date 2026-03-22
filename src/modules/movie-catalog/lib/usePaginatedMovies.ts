@@ -3,11 +3,12 @@ import { useIntersectionObserver } from '@siberiacancode/reactuse'
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query'
 import { useEffect, useMemo } from 'react'
 import { fetchMovies } from '../api'
+import { Filters } from './types'
 
-export function usePaginatedMovies() {
+export function usePaginatedMovies(filters: Filters) {
 	const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useSuspenseInfiniteQuery({
-		queryKey: ['movies', 'infinite'],
-		queryFn: ({ pageParam }) => fetchMovies({ pageParam }),
+		queryKey: ['movies', 'infinite', filters],
+		queryFn: ({ pageParam }) => fetchMovies({ pageParam, ...filters }),
 
 		initialPageParam: 1,
 		getNextPageParam: (lastPage, allPages) => {
@@ -17,11 +18,13 @@ export function usePaginatedMovies() {
 
 			return nextPage <= maxPages ? nextPage : undefined
 		},
-
-		staleTime: 60 * 1000,
 	})
 
-	const movies = useMemo(() => data.pages.flatMap((page) => page.data?.items || []), [data])
+	const movies = useMemo(() => {
+		return data.pages
+			.flatMap((page) => page.data?.items || [])
+			.filter((movie) => !movie.posterUrlPreview?.includes('no-poster'))
+	}, [data])
 
 	const { ref: scrollTargetRef, entries } = useIntersectionObserver<HTMLDivElement>({
 		onChange: (entries) => {

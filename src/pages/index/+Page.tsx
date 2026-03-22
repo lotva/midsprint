@@ -1,4 +1,4 @@
-import { MovieInfiniteList } from '@/modules/movie-list/MovieInfiniteList'
+import { MovieCatalog } from '@/modules/movie-catalog'
 import { Title } from './ui/Title'
 
 export default function Page() {
@@ -6,7 +6,7 @@ export default function Page() {
 		<>
 			<Title />
 
-			<MovieInfiniteList className="mt-5g" />
+			<MovieCatalog className="mt-5g" />
 		</>
 	)
 }

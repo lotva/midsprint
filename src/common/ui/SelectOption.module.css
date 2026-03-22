@@ -1,0 +1,45 @@
+.option {
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding-block: calc(var(--gap) / 2 - 0.15em) calc(var(--gap) / 2);
+	padding-inline: calc(var(--gap) - var(--typography__outline-thickness));
+	border-radius: calc(var(--radius) - var(--typography__outline-thickness));
+
+	color: inherit;
+
+	outline-color: transparent;
+	outline-style: solid;
+
+	transition:
+		background-color var(--animation__duration) var(--animation__ease),
+		box-shadow var(--animation__duration--fast) var(--animation__ease-in-out);
+}
+
+.option::checkmark {
+	content: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22currentColor%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M16.707%205.293a1%201%200%20010%201.414l-8%208a1%201%200%2001-1.414%200l-4-4a1%201%200%20011.414-1.414L8%2012.586l7.293-7.293a1%201%200%20011.414%200z%22%20clip-rule%3D%22evenodd%22%20%2F%3E%3C%2Fsvg%3E');
+
+	order: 1;
+
+	aspect-ratio: 1;
+	inline-size: 1em;
+
+	line-height: 0;
+}
+
+.option:hover {
+	background-color: var(--color__muted);
+	transition: none;
+}
+
+.option:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 var(--typography__outline-thickness) var(--color__outline);
+}
+
+.option:checked {
+	background-color: var(--color__input--hover);
+}
