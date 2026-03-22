@@ -31,7 +31,7 @@ export default defineConfig({
 		'@nkzw/no-instanceof': 'error',
 		'@nkzw/require-use-effect-arguments': 'error',
 
-		complexity: 'error',
+		complexity: 'off',
 		'constructor-super': 'error',
 		curly: ['warn', 'multi-line'],
 		'for-direction': 'error',

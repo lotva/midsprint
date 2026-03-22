@@ -6,15 +6,18 @@ import { useSyncFilters } from '../lib/useSyncFilters'
 export const MovieInfiniteList = withFallback(
 	({ className = '' }: { className?: string }) => {
 		const { filters } = useSyncFilters()
-		const { movies, hasNextPage, isFetchingNextPage, scrollTargetRef } = usePaginatedMovies(filters)
+		const { movies, isFetchingNextPage, scrollTargetRef } = usePaginatedMovies(filters)
 
 		return (
 			<div className={`flex flex-col gap-3g ${className}`}>
-				<div className={GRID_LAYOUT}>
+				<ul className={GRID_LAYOUT}>
 					{movies.map((movie) => {
-						const meta = [movie.year, movie.ratingKinopoisk, movie.ratingImdb]
-							.map((value) => formatNumber(value))
+						const meta = [
+							movie.year,
+							formatNumber(movie.ratingKinopoisk || movie.ratingImdb, { minimumFractionDigits: 1 }),
+						]
 							.filter(Boolean)
+							.join(' · ')
 
 						return (
 							<article
@@ -33,29 +36,27 @@ export const MovieInfiniteList = withFallback(
 									<h2 className="text-sm font-medium leading-tight text-foreground-title pe-0.5g">
 										<a
 											className="clickable-area-trigger decoration-offset-[0.25em]"
-											href={`/movie/${movie.kinopoiskId}`}
+											href={`/${movie.kinopoiskId}`}
 										>
 											{movie.nameRu || movie.nameOriginal}
 										</a>
 									</h2>
-									<p className="text-xs text-foreground-muted mt-1.5gr">{meta.join(' · ')}</p>
+									<p className="text-xs text-foreground-muted mt-1.5gr">{meta}</p>
 								</div>
 							</article>
 						)
 					})}
-				</div>
+				</ul>
 
 				<div
 					className="py-3g flex justify-center items-center min-h-[100px]"
 					ref={scrollTargetRef}
 				>
-					{isFetchingNextPage ? (
+					{isFetchingNextPage && (
 						<div className="flex items-center gap-2">
 							<div className="w-4 h-4 border-2 border-border border-t-foreground-strong rounded-full animate-spin" />
-							<span className="text-sm text-foreground-muted">Loading more...</span>
+							<span className="text-sm text-foreground-muted">Загрузка...</span>
 						</div>
-					) : (
-						hasNextPage && <div className="text-foreground-muted text-xs">Keep scrolling...</div>
 					)}
 				</div>
 			</div>

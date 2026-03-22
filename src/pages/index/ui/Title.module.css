@@ -10,9 +10,9 @@
 	@media (width >= 640px) {
 		font-size: var(--font-size__2xl);
 	}
-}
 
-.subtitle {
-	font-style: normal;
-	color: var(--color__primary);
+	em {
+		font-style: normal;
+		color: var(--color__primary);
+	}
 }

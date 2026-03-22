@@ -10,17 +10,26 @@
 	border-radius: var(--radius__sm);
 
 	color: var(--color__background);
+	text-decoration: none;
 	letter-spacing: 0.05em;
 
 	background-color: var(--color__foreground);
 
-	transition:
-		background-color var(--animation__duration--fast) var(--animation__ease-out),
-		width var(--animation__duration--fast) var(--animation__ease-out),
-		scale var(--animation__duration--fast) var(--animation__ease-out);
-
+	&,
 	&:hover {
+		transition:
+			background-color var(--animation__duration--fast) var(--animation__ease-out),
+			width var(--animation__duration--fast) var(--animation__ease-out),
+			scale var(--animation__duration--fast) var(--animation__ease-out);
+	}
+
+	&:hover:not([aria-current='page']) {
 		scale: 1.05;
+		color: var(--color__background);
 		background-color: var(--color__foreground--strong);
+	}
+
+	&:focus-visible {
+		box-shadow: 0 0 0 var(--typography__outline-thickness) var(--color__outline);
 	}
 }

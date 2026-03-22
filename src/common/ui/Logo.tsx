@@ -1,13 +1,19 @@
 import styles from './Logo.module.css'
+import { NavigationLink } from './NavigationLink'
 
 export function Logo() {
 	return (
-		<span
-			aria-label="Логотип каталога"
+		<NavigationLink
+			aria-label="Главная страница каталога"
 			className={styles.logo}
-			role="img"
+			href="/"
 		>
-			<span className="text-metrics-fix">MDSP</span>
-		</span>
+			<span
+				aria-hidden="true"
+				className="text-metrics-fix"
+			>
+				MDSP
+			</span>
+		</NavigationLink>
 	)
 }

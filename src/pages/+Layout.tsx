@@ -9,14 +9,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<Header>
-				<div className="flex gap-1g">
-					<NavigationLink href="/">Welcome</NavigationLink>
-					<NavigationLink href="/todo">Todo</NavigationLink>
-				</div>
+				<NavigationLink href="/">Welcome</NavigationLink>
 
 				<Logo />
 
-				<div className="flex gap-1g">
+				<div className="text-align-end">
 					<NavigationLink href="/star-wars">Data Fetching</NavigationLink>
 				</div>
 			</Header>
