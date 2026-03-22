@@ -11,6 +11,5 @@ export default {
 	description: 'Movie discovery app.',
 	extends: [vikeReact, vikePhoton, vikeReactQuery, vikeReactZustand],
 	lang: 'ru',
-	prerender: true,
 	title: 'Мидспринт',
 } satisfies Config
