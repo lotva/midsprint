@@ -5,6 +5,9 @@ import vikeReact from 'vike-react/config'
 import type { Config } from 'vike/types'
 
 export default {
+	cli: {
+		preview: 'vite',
+	},
 	description: 'Movie discovery app.',
 	extends: [vikeReact, vikePhoton, vikeReactQuery, vikeReactZustand],
 	lang: 'ru',
