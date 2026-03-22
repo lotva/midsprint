@@ -1,52 +1,61 @@
-Generated with [vike.dev/new](https://vike.dev/new) ([version 599](https://www.npmjs.com/package/create-vike/v/0.0.599)) using this command:
+[![Oxfmt](https://github.com/lotva/midsprint/actions/workflows/check-formatting.yaml/badge.svg)](https://github.com/lotva/midsprint/actions/workflows/check-formatting.yaml) [![Oxlint](https://github.com/lotva/midsprint/actions/workflows/check-scripts.yaml/badge.svg)](https://github.com/lotva/midsprint/actions/workflows/check-scripts.yaml) [![Stylelint](https://github.com/lotva/midsprint/actions/workflows/check-styles.yaml/badge.svg)](https://github.com/lotva/midsprint/actions/workflows/check-styles.yaml)
 
-```sh
-pnpm create vike@latest --react --vercel --prettier --oxlint
+# Midsprint
+
+Каталог фильмов. Основан на неофициальном АПИ Кинопоиска.
+
+Превью: https://midsprint.vercel.app
+
+<img width="1920" height="1080" alt="Главный экран приложения" src="https://github.com/user-attachments/assets/213f2827-8aa0-432f-b1d6-ccd3d631051e" />
+<img width="1920" height="1080" alt="Интерфейс приложения. Страница фильма" src="https://github.com/user-attachments/assets/27ce06b6-65bb-4320-af2e-d0c5a68b8da7" />
+
+## Команды для разработки
+
+Запустить дев-сервер:
+
+```bash
+pnpm install
+pnpm dev
 ```
 
-## Contents
+Собрать и развернуть локально билд:
 
-- [Vike](#vike)
-  - [Plus files](#plus-files)
-  - [Routing](#routing)
-  - [SSR](#ssr)
-  - [HTML Streaming](#html-streaming)
-- [Photon](#photon)
+```bash
+pnpm preview
+```
 
-## Vike
+Обновить зависимости:
 
-This app is ready to start. It's powered by [Vike](https://vike.dev) and [React](https://react.dev/learn).
+```bash
+pnpx npm-check-updates
+pnpm install
+```
 
-### Plus files
+## Файловая структура
 
-[The + files are the interface](https://vike.dev/config) between Vike and your code.
+**Архитектурная методология — FEOD.** Код поделён на директории `core`, `pages`, `modules` и `common`; директории поделены на сегменты `api`, `config`, `lib`, `ui`.
 
-- [`+config.ts`](https://vike.dev/settings) — Settings (e.g. `<title>`)
-- [`+Page.tsx`](https://vike.dev/Page) — The `<Page>` component
-- [`+data.ts`](https://vike.dev/data) — Fetching data (for your `<Page>` component)
-- [`+Layout.tsx`](https://vike.dev/Layout) — The `<Layout>` component (wraps your `<Page>` components)
-- [`+Head.tsx`](https://vike.dev/Head) - Sets `<head>` tags
-- [`/pages/_error/+Page.tsx`](https://vike.dev/error-page) — The error page (rendered when an error occurs)
-- [`+onPageTransitionStart.ts`](https://vike.dev/onPageTransitionStart) and `+onPageTransitionEnd.ts` — For page transition animations
+_[Документация FEOD](https://habr.com/ru/companies/sportmaster_lab/articles/972410/)_
 
-### Routing
+## Стек
 
-[Vike's built-in router](https://vike.dev/routing) lets you choose between:
+| Категория | Технологии                   |
+| --------- | ---------------------------- |
+| Фреймворк | TypeScript, React, Vike, MSW |
+| Состояние | TanStack Query, Zustand      |
+| Стили     | PostCSS, CSS Modules, UnoCSS |
+| Тулинг    | Lefthook, Oxc, Commitlint    |
 
-- [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based on where its `+Page.jsx` file is located on the filesystem)
-- [Route Strings](https://vike.dev/route-string)
-- [Route Functions](https://vike.dev/route-function)
+## Технологии
 
-### SSR
+**Стейт.** Клиентское состояие хранится в Zustand, серверное состояние — в Tanstack Query и `+data`-хуках Vike.
 
-SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all or specific pages.
+**Кодогенерация.** Типы для работы с бэкендом генерируются из OpenAPI-схемы. См. `openapi-ts.config.ts` и `@/common/api/codegen`.
 
-### HTML Streaming
+**SSR.** Работает серверный рендеринг с HTML-стримингом.
 
-You can [enable/disable HTML streaming](https://vike.dev/stream) for all or specific pages.
+**Стили.** Используется PostCSS и UnoCSS. UnoCSS настроен в стиле Tailwind. Утилитарные стили применяются для простой вёрстки и задания внешнего позиционирования.
 
-## Photon
+**Моки.** Чтобы не превысить лимит использования АПИ, на деве работает Mock Service Worker. Настроен на генерацию по OpenAPI-схеме. Есть возможность настроить моки с помощью _кассет_ — снапшотов реальных ответов АПИ. Для этого запишите в девтулах файл `.har` с историей запросов и добавьте в конфиг с помощью `fromTraffic`.
 
-[Photon](https://photonjs.dev) is a next-generation infrastructure for deploying JavaScript servers.
-
-See [Introducing Photon](https://vike.dev/blog/photon) and [Why Photon](https://photonjs.dev/why) to learn more.
+_[Тестируем вызовы API с помощью кассет](https://t.me/orgprog/366). Кирилл Мокевнин_
