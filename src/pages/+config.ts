@@ -6,6 +6,7 @@ import type { Config } from 'vike/types'
 export default {
 	description: 'Movie discovery app.',
 	extends: [vikeReact, vikePhoton, vikeReactQuery],
+	lang: 'ru',
 	prerender: true,
-	title: 'Midsprint',
+	title: 'Мидспринт',
 } satisfies Config
