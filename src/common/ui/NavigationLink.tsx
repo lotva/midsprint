@@ -1,6 +1,6 @@
 import { usePageContext } from 'vike-react/usePageContext'
 
-export function Link({ children, href }: { children: string; href: string }) {
+export function NavigationLink({ children, href }: { children: string; href: string }) {
 	const pageContext = usePageContext()
 	const { urlPathname } = pageContext
 	const isActive = href === '/' ? urlPathname === href : urlPathname.startsWith(href)

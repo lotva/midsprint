@@ -20,7 +20,7 @@ export default {
 		'color-function-notation': 'modern',
 
 		'custom-property-pattern': [
-			/^[a-z][\da-z]*(?:-[\da-z]+)*(?:__[a-z][\da-z]*(?:-[\da-z]+)*)?(?:--[a-z][\da-z]*(?:-[\da-z]+)*)?$/,
+			/^[a-z][\da-z]*(?:-[\da-z]+)*(?:__[\da-z][\da-z]*(?:-[\da-z]+)*)?(?:--[\da-z][\da-z]*(?:-[\da-z]+)*)?$/,
 			'Custom properties should follow the BEM naming convention',
 		],
 

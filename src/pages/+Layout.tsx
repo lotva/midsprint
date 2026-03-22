@@ -1,80 +1,37 @@
-import { Link } from '@/components/Link'
-import logoUrl from '@/core/assets/logo.svg'
+import '@/core/styles/index.css'
+import 'virtual:uno.css'
+
+import { NavigationLink } from '@/common/ui/NavigationLink'
 import { MswProvider } from '@/core/layout/MswProvider'
+import { Logo } from './index/ui/Logo'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<MswProvider>
-			<div
-				style={{
-					display: 'flex',
-					margin: 'auto',
-					maxWidth: 900,
-				}}
-			>
-				<Sidebar>
-					<Logo />
-					<Link href="/">Welcome</Link>
-					<Link href="/todo">Todo</Link>
-					<Link href="/star-wars">Data Fetching</Link>
-				</Sidebar>
-				<Content>{children}</Content>
-			</div>
-		</MswProvider>
-	)
-}
+			<header className="flex justify-between gap-1g py-1.5g">
+				<div className="flex gap-1g">
+					<NavigationLink href="/">Welcome</NavigationLink>
+					<NavigationLink href="/todo">Todo</NavigationLink>
+				</div>
 
-function Sidebar({ children }: { children: React.ReactNode }) {
-	return (
-		<div
-			id="sidebar"
-			style={{
-				borderRight: '2px solid #eee',
-				display: 'flex',
-				flexDirection: 'column',
-				flexShrink: 0,
-				lineHeight: '1.8em',
-				padding: 20,
-			}}
-		>
-			{children}
-		</div>
+				<Logo />
+
+				<div className="flex gap-1g">
+					<NavigationLink href="/star-wars">Data Fetching</NavigationLink>
+				</div>
+			</header>
+
+			<main className="py-10g">
+				<Content>{children}</Content>
+			</main>
+		</MswProvider>
 	)
 }
 
 function Content({ children }: { children: React.ReactNode }) {
 	return (
-		<div id="page-container">
-			<div
-				id="page-content"
-				style={{
-					minHeight: '100vh',
-					padding: 20,
-					paddingBottom: 50,
-				}}
-			>
-				{children}
-			</div>
-		</div>
-	)
-}
-
-function Logo() {
-	return (
-		<div
-			style={{
-				marginBottom: 10,
-				marginTop: 20,
-			}}
-		>
-			<a href="/">
-				<img
-					alt="logo"
-					height={64}
-					src={logoUrl}
-					width={64}
-				/>
-			</a>
+		<div data-page-transition>
+			<div>{children}</div>
 		</div>
 	)
 }

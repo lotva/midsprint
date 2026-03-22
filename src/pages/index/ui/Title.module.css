@@ -1,0 +1,18 @@
+.title {
+	font-size: var(--font-size__xl);
+	font-variation-settings: 'wdth' 90;
+	font-weight: 900;
+	line-height: 1;
+	text-align: center;
+	letter-spacing: -0.01em;
+	word-spacing: -0.05em;
+
+	@media (width >= 640px) {
+		font-size: var(--font-size__2xl);
+	}
+}
+
+.subtitle {
+	font-style: normal;
+	color: var(--color__primary);
+}

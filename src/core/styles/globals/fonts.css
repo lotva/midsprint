@@ -1,0 +1,29 @@
+:root {
+	--font__text: 'Martian Grotesk', sans-serif;
+}
+
+@font-face {
+	font-family: 'Martian Grotesk';
+	font-weight: 400 900;
+	font-style: normal;
+
+	font-display: swap;
+	src: url('/fonts/martian-grotesk.woff2') format('woff2');
+}
+
+.text-metrics-fix,
+p,
+h1,
+h2 {
+	&::before {
+		content: '';
+		display: table;
+		margin-block-end: calc(-0.3em - (1lh - 1em) / 2);
+	}
+
+	&::after {
+		content: '';
+		display: table;
+		margin-block-start: calc(-0.1em - (1lh - 1em) / 2);
+	}
+}

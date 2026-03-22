@@ -1,0 +1,26 @@
+.logo {
+	user-select: none;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: calc(gapRelative(0.25) + var(--typography__surface-capital-compensator)) gapRelative(1)
+		gapRelative(0.25);
+	border-radius: var(--radius);
+
+	color: var(--color__background);
+	letter-spacing: 0.05em;
+
+	background-color: var(--color__foreground);
+
+	transition:
+		background-color var(--animation__duration--fast) var(--animation__ease-out),
+		width var(--animation__duration--fast) var(--animation__ease-out),
+		scale var(--animation__duration--fast) var(--animation__ease-out);
+
+	&:hover {
+		scale: 1.05;
+		background-color: var(--color__foreground--strong);
+	}
+}

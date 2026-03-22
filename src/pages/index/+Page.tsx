@@ -1,15 +1,14 @@
-import { Counter } from './Counter.js'
+import { Title } from './ui/Title'
 
 export default function Page() {
 	return (
 		<>
-			<h1>My Vike app</h1>
+			<Title />
+
 			<p>This page is:</p>
 			<ul>
 				<li>Rendered to HTML.</li>
-				<li>
-					Interactive. <Counter />
-				</li>
+				<li>Interactive.</li>
 			</ul>
 		</>
 	)

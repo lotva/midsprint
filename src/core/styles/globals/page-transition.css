@@ -1,0 +1,8 @@
+[data-page-transition] {
+	transition: opacity var(--animation__duration) var(--animation__ease-in-out);
+
+	body._is-transitioning & {
+		opacity: var(--color__disabled-state-opacity);
+		transition: none;
+	}
+}

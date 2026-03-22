@@ -1,0 +1,11 @@
+html {
+	cursor: default;
+	overscroll-behavior: contain;
+}
+
+body {
+	position: relative;
+	max-inline-size: 1024px;
+	margin: 0 auto;
+	padding-inline: gap();
+}
